@@ -8,7 +8,11 @@ class Foo(object):
         self.x = 2
 
     def bar_1(self):
-        self.x += -1
+
+        def trip_1():
+            a = -7
+            return a
+        self.x += 1
 
 
 func(10)

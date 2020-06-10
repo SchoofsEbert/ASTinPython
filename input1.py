@@ -7,6 +7,9 @@ class Foo(object):
         self.x = 2
 
     def bar(self):
+        def trip():
+            a = 7
+            return a
         self.x += 1
 
 
