@@ -8,6 +8,11 @@ We need these transformations for all ​functions​ and ​public methods​*:
 - Rename: Append ‘_1’. 
 - Change all integer values: Make them negative.  
 
+### Execute
+Change the INPUT and OUTPUT variables in challenge1.py to the desired files
+```shell script
+python3 challenge1.py
+```
 ### Example
 input1.py (original)
 ```python
@@ -50,6 +55,15 @@ f.bar()
 Write a wrapper function to print the name, the value of the arguments and the return value of the wrapped function. 
 Then read a python file, parse it to AST and add this wrapper dynamically to all functions.  Then run the modified ast. 
 
+### Execute
+Change the INPUT and OUTPUT variables in challenge1.py to the desired files
+```shell script
+python3 challenge2.py
+```
+Run the generated output file
+```shell script
+python3 [OUTPUT]
+```
 ### Example
 input2.py (input)
 ```python
