@@ -9,9 +9,18 @@ We need these transformations for all ​functions​ and ​public methods​*:
 - Change all integer values: Make them negative.  
 
 ### Execute
+Set up the Pipenv shell
+```shell script
+pipenv install
+pipenv shell
+```
 Change the INPUT and OUTPUT variables in challenge1.py to the desired files
 ```shell script
 python3 challenge1.py
+```
+Exit the Pipenv shell
+```shell script
+exit
 ```
 ### Example
 input1.py (original)
@@ -56,9 +65,18 @@ Write a wrapper function to print the name, the value of the arguments and the r
 Then read a python file, parse it to AST and add this wrapper dynamically to all functions.  Then run the modified ast. 
 
 ### Execute
+Set up the Pipenv shell
+```shell script
+pipenv install
+pipenv shell
+```
 Change the INPUT and OUTPUT variables in challenge1.py to the desired files
 ```shell script
 python3 challenge2.py
+```
+Exit the Pipenv shell
+```shell script
+exit
 ```
 Run the generated output file
 ```shell script
