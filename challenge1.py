@@ -38,11 +38,6 @@ class Transformer(ast.NodeTransformer):
         self.inside_function = False
         return node
 
-    """HELPER FUNCTIONS"""
-
-    def is_child_of_function_definition(self, node):
-        return True
-
 
 if __name__ == "__main__":
     tree = AST("input1.py")
