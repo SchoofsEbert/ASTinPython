@@ -93,7 +93,7 @@ def func1(x, y):
 
 func1(4, 6) 
 ```
-Program output
+output2.py output
 ```
 get100: () -> 100
 func1: (4,6) -> 111 
