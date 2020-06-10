@@ -1,24 +1,8 @@
 import ast
-import astor
+from AST import AST
 
-
-class AST:
-    def __init__(self, filename):
-        self.filename = filename
-        with open(filename, "r") as source:
-            self.AST = ast.parse(source.read())
-
-        self.transformer = Transformer()
-
-    def transform(self):
-        self.transformer.visit(self.AST)
-
-    def print(self):
-        print(astor.dump_tree(self.AST))
-
-    def compile(self, filename):
-        with open(filename, "w") as output:
-            output.write(astor.to_source(self.AST))
+INPUT = "input1.py"
+OUTPUT = "output1.py"
 
 
 class Transformer(ast.NodeTransformer):
@@ -39,6 +23,6 @@ class Transformer(ast.NodeTransformer):
 
 
 if __name__ == "__main__":
-    tree = AST("input1.py")
+    tree = AST(INPUT, Transformer())
     tree.transform()
-    tree.compile("output1.py")
+    tree.compile(OUTPUT)

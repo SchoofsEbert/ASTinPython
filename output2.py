@@ -10,7 +10,7 @@ def get100():
 
 
 def func1(x, y):
-    return wrapper(get100, 5) + x + y + 1
+    return wrapper(get100) + x + y + 1
 
 
 wrapper(func1, 4, 6)
