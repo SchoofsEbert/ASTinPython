@@ -22,7 +22,6 @@ class AST:
 
 
 class Transformer(ast.NodeTransformer):
-    """VISITOR FUNCTIONS"""
     inside_function = False
 
     def visit_Constant(self, node):
