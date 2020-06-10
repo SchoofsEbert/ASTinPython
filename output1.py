@@ -1,5 +1,5 @@
 def func_1(x):
-    return x + 4
+    return x + -4
 
 
 class Foo(object):
@@ -8,7 +8,7 @@ class Foo(object):
         self.x = 2
 
     def bar_1(self):
-        self.x += 1
+        self.x += -1
 
 
 func(10)
