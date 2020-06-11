@@ -1,16 +1,24 @@
-def wrapper(func, *args):
-    computed = func(*args)
-    string = '{}: {} -> {}'.format(func.__name__, args, computed)
-    print(string)
-    return computed
+def print_info():
+
+    def function_info(func):
+
+        def argument_info(*args):
+            computed = func(*args)
+            string = '{}: {} -> {}'.format(func.__name__, args, computed)
+            print(string)
+            return computed
+        return argument_info
+    return function_info
 
 
+@print_info()
 def get100():
     return 100
 
 
+@print_info()
 def func1(x, y):
-    return wrapper(get100) + x + y + 1
+    return get100() + x + y + 1
 
 
-wrapper(func1, 4, 6)
+func1(4, 6)

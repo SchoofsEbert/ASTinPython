@@ -6,29 +6,28 @@ INPUT = "input2.py"
 OUTPUT = "output2.py"
 
 
-def wrapper(func, *args):
-    computed = func(*args)
-    string = "{}: {} -> {}".format(func.__name__, args, computed)
-    print(string)
-    return computed
+def print_info():
+    def function_info(func):
+        def argument_info(*args):
+            computed = func(*args)
+            string = '{}: {} -> {}'.format(func.__name__, args, computed)
+            print(string)
+            return computed
+        return argument_info
+    return function_info
 
 
 class Transformer(ast.NodeTransformer):
-    wrapperAST = astor.code_to_ast(wrapper)
+    wrapperAST = astor.code_to_ast(print_info)
 
     def visit_Module(self, node):
         self.generic_visit(node)
         node.body.insert(0, self.wrapperAST)
 
-    def visit_Call(self, node):
-        try:  # Normal Function Call
-            fun_name = ast.Name(id=node.func.id)
-        except:  # Method Call
-            return node
-        new_call = ast.Call(func=ast.Name(id="wrapper"), args=[fun_name] + node.args,
-                            keywords=[])
-        ast.copy_location(new_call, node)
-        return new_call
+    def visit_FunctionDef(self, node):
+        self.generic_visit(node)
+        node.decorator_list.append(ast.Call(ast.Name(id="print_info"), args=[], keywords=[]))
+        return node
 
 
 if __name__ == "__main__":
