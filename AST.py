@@ -18,3 +18,6 @@ class AST:
     def compile(self, filename):
         with open(filename, "w") as output:
             output.write(astor.to_source(self.AST))
+
+    def execute(self):
+        exec(astor.to_source(self.AST), {})

@@ -70,17 +70,13 @@ Set up the Pipenv shell
 pipenv install
 pipenv shell
 ```
-Change the INPUT and OUTPUT variables in challenge1.py to the desired files
+Change the INPUT variable in challenge2.py to the desired file
 ```shell script
 python3 challenge2.py
 ```
 Exit the Pipenv shell
 ```shell script
 exit
-```
-Run the generated output file
-```shell script
-python3 [OUTPUT]
 ```
 ### Example
 input2.py (input)
@@ -93,7 +89,7 @@ def func1(x, y):
 
 func1(4, 6) 
 ```
-output2.py output
+challenge2.py output
 ```
 get100: () -> 100
 func1: (4,6) -> 111 

@@ -3,7 +3,6 @@ import astor
 from AST import AST
 
 INPUT = "input2.py"
-OUTPUT = "output2.py"
 
 
 def print_info():
@@ -13,12 +12,17 @@ def print_info():
             string = '{}: {} -> {}'.format(func.__name__, args, computed)
             print(string)
             return computed
+
         return argument_info
+
     return function_info
 
 
 class Transformer(ast.NodeTransformer):
     wrapperAST = astor.code_to_ast(print_info)
+
+    def visit_ClassDef(self, node):
+        return node  # Don't add decorators to Class methods
 
     def visit_Module(self, node):
         self.generic_visit(node)
@@ -33,4 +37,4 @@ class Transformer(ast.NodeTransformer):
 if __name__ == "__main__":
     tree = AST(INPUT, Transformer())
     tree.transform()
-    tree.compile(OUTPUT)
+    tree.execute()
