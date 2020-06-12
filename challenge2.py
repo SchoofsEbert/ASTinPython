@@ -24,10 +24,6 @@ class Transformer(ast.NodeTransformer):
     def visit_ClassDef(self, node):
         return node  # Don't add decorators to Class methods
 
-    def visit_Module(self, node):
-        self.generic_visit(node)
-        node.body.insert(0, self.wrapperAST)
-
     def visit_FunctionDef(self, node):
         self.generic_visit(node)
         node.decorator_list.append(ast.Call(ast.Name(id="print_info"), args=[], keywords=[]))
@@ -37,4 +33,4 @@ class Transformer(ast.NodeTransformer):
 if __name__ == "__main__":
     tree = AST(INPUT, Transformer())
     tree.transform()
-    tree.execute()
+    tree.execute({"print_info": print_info})
